@@ -1,3 +1,7 @@
+---
+name: geo-platform-analysis
+description: Platform optimization specialist analyzing readiness for Google AI Overviews, ChatGPT web search, Perplexity AI, Google Gemini, and Bing Copilot.
+---
 # Skill: geo-platform-analysis
 
 **Commission:** Platform optimization specialist analyzing readiness for Google AI Overviews, ChatGPT web search, Perplexity AI, Google Gemini, and Bing Copilot.
