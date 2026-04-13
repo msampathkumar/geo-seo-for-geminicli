@@ -45,7 +45,7 @@
 
 ### Gemini CLI Integration
 
-Once dependencies are installed via `./install.sh`, you can interact with the GEO SEO features via the Gemini CLI. The project's primary skill, `geo/SKILL.md`, is designed to be discoverable and executable by the Gemini CLI. Commands are invoked using the `/geo` prefix. The `install.sh` script has been updated to check for and guide the installation of the Gemini CLI.
+Once installed via `./install.sh`, the GEO SEO features are available as a set of modular skills in your Gemini CLI environment. These skills are automatically enabled and loaded into your session. You can interact with them by asking the model to perform specific audits or analyses using the respective skill.
 
 ### Requirements
 
@@ -56,24 +56,27 @@ Once dependencies are installed via `./install.sh`, you can interact with the GE
 
 ---
 
-## Gemini CLI Commands
+## Available Skills
 
-Use these commands within your Gemini CLI session:
+The tool installs the following skills in your Gemini CLI environment. You can invoke their functionality by mentioning them or asking the model to use them:
 
-| Command | What It Does |
-|---------|-------------|
-| `/geo audit <url>` | Full GEO + SEO audit with parallel subagents |
-| `/geo quick <url>` | 60-second GEO visibility snapshot |
-| `/geo citability <url>` | Score content for AI citation readiness |
-| `/geo crawlers <url>` | Check AI crawler access (robots.txt) |
-| `/geo llmstxt <url>` | Analyze or generate llms.txt |
-| `/geo brands <url>` | Scan brand mentions across AI-cited platforms |
-| `/geo platforms <url>` | Platform-specific optimization |
-| `/geo schema <url>` | Structured data analysis & generation |
-| `/geo technical <url>` | Technical SEO audit |
-| `/geo content <url>` | Content quality & E-E-A-T assessment |
-| `/geo report <url>` | Generate client-ready GEO report |
-| `/geo report-pdf` | Generate professional PDF report with charts & visualizations |
+| Skill Name | What It Does |
+|------------|-------------|
+| `geo` | Main entry point and orchestration for GEO audits |
+| `geo-audit` | Full GEO + SEO audit workflow |
+| `geo-brand-mentions` | Scan brand mentions across platforms |
+| `geo-citability` | Score content for AI citation readiness |
+| `geo-compare` | Compare GEO visibility between sites |
+| `geo-content` | Content quality and E-E-A-T assessment |
+| `geo-crawlers` | Check AI crawler access (robots.txt) |
+| `geo-llmstxt` | Analyze or generate llms.txt files |
+| `geo-platform-optimizer` | Platform-specific AI search optimization |
+| `geo-proposal` | Auto-generate client-ready proposals |
+| `geo-prospect` | CRM-lite for managing GEO leads |
+| `geo-report` | Generate client-ready GEO reports |
+| `geo-report-pdf` | Generate professional PDF reports with charts |
+| `geo-schema` | Structured data audit and generation |
+| `geo-technical` | Technical SEO audit with GEO-specific checks |
 
 ---
 
@@ -128,7 +131,7 @@ geo-seo-claude/
 
 ### Full Audit Flow (via Gemini CLI)
 
-When you execute a command like `/geo audit https://example.com` within the Gemini CLI:
+When you ask the model to perform a GEO audit using the `geo-audit` skill:
 
 1.  **Orchestration:** The `geo/SKILL.md` file, recognized by the Gemini CLI, routes the command to the appropriate sub-skill (e.g., `geo-audit`).
 2.  **Discovery & Initialization:** The `geo-audit` skill or its associated agents initiate by fetching the target URL, detecting business types, and crawling sitemaps using utilities from the `scripts/` directory.
