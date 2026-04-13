@@ -1,10 +1,12 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="GEO-SEO Gemini CLI Skill" width="900"/>
+  <img src="assets/banner.png" alt="GEO-SEO Gemini CLI Skill" width="900"/>
 </p>
 
+> [!NOTE]
+> This repository is forked and built upon the popular tool [geo-seo-claude](https://github.com/zubair-trabzada/geo-seo-claude) but is customized specifically for Gemini CLI users.
+
 <p align="center">
-  <strong>GEO-first, SEO-supported.</strong> Optimize websites for AI-powered search engines<br/>
-  (Gemini, ChatGPT, Claude, Perplexity, Google AI Overviews) while maintaining traditional SEO foundations.
+  <strong>GEO-first, SEO-supported.</strong> Optimize websites for Gemini CLI while maintaining traditional SEO foundations.
 </p>
 
 <p align="center">
@@ -32,8 +34,8 @@
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/zubair-trabzada/geo-seo-claude.git
-    cd geo-seo-claude
+    git clone https://github.com/msampathkumar/geo-seo-for-geminicli.git
+    cd geo-seo-for-geminicli
     ```
 2.  **Install dependencies:**
     ```bash
@@ -132,7 +134,7 @@ When you execute a command like `/geo audit https://example.com` within the Gemi
 2.  **Discovery & Initialization:** The `geo-audit` skill or its associated agents initiate by fetching the target URL, detecting business types, and crawling sitemaps using utilities from the `scripts/` directory.
 3.  **Parallel Analysis:** The Gemini CLI environment efficiently launches the core analysis agents (`agents/` directory) in parallel. These agents leverage specialized sub-skills (`skills/`) and utility scripts for tasks such as:
     *   **AI Visibility:** Assessing citability, crawler access, and brand mentions.
-    *   **Platform Analysis:** Evaluating readiness for Gemini, ChatGPT, Perplexity, and Google AI Overviews.
+    *   **Platform Analysis:** Evaluating readiness for Gemini CLI.
     *   **Technical SEO:** Checking Core Web Vitals, SSR, security, and mobile-friendliness.
     *   **Content Quality:** Evaluating E-E-A-T, readability, and freshness.
     *   **Schema Markup:** Detecting, validating, and potentially generating JSON-LD from `schema/` templates.
@@ -158,7 +160,7 @@ When you execute a command like `/geo audit https://example.com` within the Gemi
 Analyzes content blocks for AI citation readiness. Optimal AI-cited passages are 134-167 words, self-contained, fact-rich, and directly answer questions.
 
 ### AI Crawler Analysis
-Checks robots.txt for 14+ AI crawlers (GeminiBot, GPTBot, GeminiBot, PerplexityBot, etc.) and provides specific allow/block recommendations.
+Checks robots.txt for AI crawlers (including GeminiBot) and provides specific allow/block recommendations.
 
 ### Brand Mention Scanning
 Brand mentions correlate 3x more strongly with AI visibility than backlinks. Scans YouTube, Reddit, Wikipedia, LinkedIn, and 7+ other platforms.

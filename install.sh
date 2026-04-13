@@ -6,7 +6,7 @@ set -euo pipefail
 # Installs the GEO-first SEO analysis tool for Gemini Code
 # ============================================================
 
-# REPO_URL="https://github.com/zubair-trabzada/geo-seo-gemini.git"
+REPO_URL="https://github.com/msampathkumar/geo-seo-for-geminicli"
 GEMINI_DIR="${HOME}/.gemini"
 SKILLS_DIR="${GEMINI_DIR}/skills"
 AGENTS_DIR="${GEMINI_DIR}/agents"
@@ -281,7 +281,7 @@ main() {
     echo "    /geo report <url>     Client-ready GEO report"
     echo "    /geo report-pdf       Generate PDF report from audit data"
     echo ""
-    echo "  Documentation: https://github.com/zubair-trabzada/geo-seo-gemini"
+    echo "  Documentation: https://github.com/msampathkumar/geo-seo-for-geminicli"
     echo ""
 }
 
