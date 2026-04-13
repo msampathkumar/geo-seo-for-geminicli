@@ -1,6 +1,6 @@
 ---
 name: geo-ai-visibility
-description: GEO specialist analyzing AI search visibility: citability scoring, AI crawler access, llms.txt compliance, and brand mention presence across AI-cited platforms.
+description: "GEO specialist analyzing AI search visibility: citability scoring, AI crawler access, llms.txt compliance, and brand mention presence across AI-cited platforms."
 ---
 # Skill: geo-ai-visibility
 

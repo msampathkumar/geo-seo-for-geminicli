@@ -1,3 +1,7 @@
+---
+name: geo-content
+description: "Content quality and E-E-A-T assessment for AI citability — evaluate experience, expertise, authoritativeness, trustworthiness, and content structure"
+---
 # Skill: geo-content
 
 **Commission:** Content quality and E-E-A-T assessment for AI citability — evaluate experience, expertise, authoritativeness, trustworthiness, and content structure

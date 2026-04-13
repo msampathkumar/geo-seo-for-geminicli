@@ -1,3 +1,7 @@
+---
+name: geo
+description: GEO-first SEO analysis tool. Optimizes websites for AI-powered search engines.
+---
 # Skill: geo
 
 **Commission:** GEO-first SEO analysis tool. Optimizes websites for AI-powered search engines (Gemini, ChatGPT, Perplexity, Google AI Overviews) while maintaining traditional SEO foundations. Performs full GEO audits, citability scoring, AI crawler analysis, llms.txt generation, brand mention scanning, platform-specific optimization, schema markup, technical SEO, content quality (E-E-A-T), and client-ready GEO report generation. Use when user says "geo", "seo", "audit", "AI search", "AI visibility", "optimize", "citability", "llms.txt", "schema", "brand mentions", "GEO report", or any URL for analysis.
@@ -66,16 +70,19 @@
 2. Detect business type (SaaS, Local, E-commerce, Publisher, Agency, Other)
 3. Extract key pages from sitemap.xml or internal links (up to 50 pages)
 
-**Phase 2: Parallel Analysis (Delegate to Subagents)**
-Launch these 5 subagents simultaneously:
+**Phase 2: Parallel Analysis (Delegate to Sub-skills)**
+Since you are running in Gemini CLI, you may not have an `invoke_subagent` tool. Instead, you should perform the analysis for each dimension by following the instructions in the corresponding sub-skills (e.g., `geo-technical`, `geo-content`) or by executing the steps described in the `agents/` files using your available tools (Bash, WebFetch, etc.).
 
-| Subagent | File | Responsibility |
+| Dimension | Reference File | Responsibility |
 |----------|------|---------------|
 | geo-ai-visibility | `agents/geo-ai-visibility.md` | GEO audit, citability, AI crawlers, llms.txt, brand mentions |
 | geo-platform-analysis | `agents/geo-platform-analysis.md` | Platform-specific optimization (ChatGPT, Perplexity, Google AIO) |
 | geo-technical | `agents/geo-technical.md` | Technical SEO, Core Web Vitals, crawlability, indexability |
 | geo-content | `agents/geo-content.md` | Content quality, E-E-A-T, readability, AI content detection |
 | geo-schema | `agents/geo-schema.md` | Schema markup detection, validation, generation |
+
+> [!NOTE]
+> Do not attempt to call a tool named `geo_audit` or `mcp_geo_audit`. Follow the workflow steps described in this file and the sub-skills to perform the audit manually or by activating the sub-skills.
 
 **Phase 3: Synthesis (Sequential)**
 1. Collect all subagent reports

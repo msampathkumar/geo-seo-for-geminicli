@@ -1,3 +1,7 @@
+---
+name: geo-technical
+description: "Technical SEO audit with GEO-specific checks — crawlability, indexability, security, performance, SSR, and AI crawler access"
+---
 # Skill: geo-technical
 
 **Commission:** Technical SEO audit with GEO-specific checks — crawlability, indexability, security, performance, SSR, and AI crawler access

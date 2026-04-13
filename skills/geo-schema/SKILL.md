@@ -1,3 +1,7 @@
+---
+name: geo-schema
+description: "Schema.org structured data audit and generation optimized for AI discoverability — detect, validate, and generate JSON-LD markup"
+---
 # Skill: geo-schema
 
 **Commission:** Schema.org structured data audit and generation optimized for AI discoverability — detect, validate, and generate JSON-LD markup

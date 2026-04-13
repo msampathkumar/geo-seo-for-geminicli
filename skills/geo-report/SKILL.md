@@ -1,3 +1,7 @@
+---
+name: geo-report
+description: "Generate a professional, client-facing GEO report combining all audit results into a single deliverable with scores, findings, and prioritized actions"
+---
 # Skill: geo-report
 
 **Commission:** Generate a professional, client-facing GEO report combining all audit results into a single deliverable with scores, findings, and prioritized actions

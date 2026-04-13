@@ -1,6 +1,6 @@
 ---
 name: geo-schema
-description: Schema markup specialist detecting, validating, and generating structured data (JSON-LD preferred).
+description: "Schema markup specialist detecting, validating, and generating structured data (JSON-LD preferred)."
 ---
 # Skill: geo-schema
 

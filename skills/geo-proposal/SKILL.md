@@ -1,3 +1,7 @@
+---
+name: geo-proposal
+description: "Auto-generate a professional, client-ready GEO service proposal from audit data. Creates a full proposal in markdown and PDF including executive summary, findings, recommended service packages (Basic/Standard/Premium), pricing, timeline, and terms. Use when user says \"proposal\", \"proposta\", \"offerta\", \"preventivo\", \"generate proposal\", or after completing a GEO audit for a prospect."
+---
 # Skill: geo-proposal
 
 **Commission:** Auto-generate a professional, client-ready GEO service proposal from audit data. Creates a full proposal in markdown and PDF including executive summary, findings, recommended service packages (Basic/Standard/Premium), pricing, timeline, and terms. Use when user says "proposal", "proposta", "offerta", "preventivo", "generate proposal", or after completing a GEO audit for a prospect.

@@ -1,6 +1,6 @@
 ---
 name: geo-technical
-description: Technical SEO specialist analyzing crawlability, indexability, security, URL structure, mobile optimization, Core Web Vitals, server-side rendering, and JavaScript dependency.
+description: "Technical SEO specialist analyzing crawlability, indexability, security, URL structure, mobile optimization, Core Web Vitals, server-side rendering, and JavaScript dependency."
 ---
 # Skill: geo-technical
 

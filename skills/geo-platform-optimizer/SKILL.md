@@ -1,3 +1,7 @@
+---
+name: geo-platform-optimizer
+description: "Platform-specific AI search optimization — audit and optimize for Google AI Overviews, ChatGPT, Perplexity, Gemini, and Bing Copilot individually"
+---
 # Skill: geo-platform-optimizer
 
 **Commission:** Platform-specific AI search optimization — audit and optimize for Google AI Overviews, ChatGPT, Perplexity, Gemini, and Bing Copilot individually

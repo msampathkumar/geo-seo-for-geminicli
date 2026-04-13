@@ -1,6 +1,6 @@
 ---
 name: geo-content
-description: Content quality specialist evaluating E-E-A-T signals, content depth, readability, AI content detection, and topical authority.
+description: "Content quality specialist evaluating E-E-A-T signals, content depth, readability, AI content detection, and topical authority."
 ---
 # Skill: geo-content
 
