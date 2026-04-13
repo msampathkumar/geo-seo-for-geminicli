@@ -21,6 +21,14 @@ description: GEO-first SEO analysis tool. Optimizes websites for AI-powered sear
 
 ---
 
+## Master Skill Rules
+
+1. **Intent Capture First**: Before executing any command, the agent must confirm the user's intent (e.g., dry-run vs deep-research, scope) using MCQs. Do not proceed without 80% certainty.
+2. **Actionable & Measurable Feedback**: All analysis must provide specific, measurable scores (e.g., 4/10) and actionable recommendations. Results must be saved in the structured report folder.
+3. **Orchestration Authority**: `/geo` is the main entry point. It is the "boss" skill that is aware of and coordinates all other `geo-*` specialized skills located in the `skills/` directory.
+
+---
+
 ## Quick Reference
 
 | Command | What It Does |
@@ -65,8 +73,13 @@ description: GEO-first SEO analysis tool. Optimizes websites for AI-powered sear
 
 ### Full Audit (`/geo audit <url>`)
 
+**Phase 0: Intent Capture & Setup (Prerequisite)**
+1. **Get Clarity**: Ask the user if it's a dry-run (single page) or deep-research (entire website). Use MCQs. Do not start without 80% certainty of intent.
+2. **Create Folder**: Create a folder named `geo-seo-<deep-research/dry-run>-report` based on the domain name.
+3. **Initialize Files**: Create `README.md`, `Metrics.md`, `Change.md`, `History.md`, and `ActionPlan.md`.
+
 **Phase 1: Discovery (Sequential)**
-1. Fetch homepage HTML (curl or WebFetch)
+1. Fetch homepage HTML (curl or WebFetch). Respect caching rules.
 2. Detect business type (SaaS, Local, E-commerce, Publisher, Agency, Other)
 3. Extract key pages from sitemap.xml or internal links (up to 50 pages)
 
@@ -152,9 +165,24 @@ Adjust recommendations based on detected type. Local businesses need LocalBusine
 
 ---
 
-## Output Files
+## Output Files & Folder Structure
 
-All commands generate structured output:
+All commands generate structured output. For full audits and deep research, results are organized in a dedicated folder:
+
+### Report Folder Structure
+Created based on the domain name: `geo-seo-<deep-research/dry-run>-report/`
+
+| File | Purpose |
+|------|---------|
+| `README.md` | Key highlights (with stats) and summary for stakeholders. |
+| `Metrics.md` | Defined metrics and parameters for scoring. |
+| `Change.md` | History of improvements, changes, and key decisions. |
+| `History.md` | Timeline of runs, scores, and notes to track progress. |
+| `ActionPlan.md` | Specific, prioritized tasks to improve scores. |
+| `.cache/` | Cached webpages. |
+
+### Legacy File Outputs
+(If not using the structured folder approach or for specific individual commands)
 
 | Command | Output File |
 |---------|------------|
@@ -174,6 +202,16 @@ All commands generate structured output:
 | `/geo prospect` | Updates `~/.geo-prospects/prospects.json` |
 | `/geo proposal` | `~/.geo-prospects/proposals/<domain>-proposal-<date>.md` |
 | `/geo compare` | `~/.geo-prospects/reports/<domain>-monthly-<YYYY-MM>.md` |
+
+---
+
+## Caching Policy
+
+To ensure efficiency and avoid duplicate downloads:
+1. **Storage**: Cached pages are saved in the `.cache/` directory within the report folder.
+2. **Static Sites**: For hosted static websites, if the time difference since last download is < 5 minutes, use the cached copy.
+3. **Exceptions**: For local files, Google Documents, or other dynamic sources, always fetch a fresh copy.
+4. **Override**: User can force a fresh fetch by specifying it in the intent or command.
 
 ---
 

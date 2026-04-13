@@ -37,11 +37,11 @@
     git clone https://github.com/msampathkumar/geo-seo-for-geminicli.git
     cd geo-seo-for-geminicli
     ```
-2.  **Install dependencies:**
+2.  **Install dependencies and skills:**
     ```bash
-    ./install.sh
+    make install
     ```
-    *(This script installs Python dependencies and potentially other requirements needed for the scripts and agents.)*
+    *(This script calls `./install.sh` to install Python dependencies and load the skills into your Gemini CLI environment.)*
 
 ### Gemini CLI Integration
 
@@ -53,6 +53,19 @@ Once installed via `./install.sh`, the GEO SEO features are available as a set o
 - Gemini CLI installed and configured (install using `npm install -g @google/gemini-cli`)
 - Git
 - Optional: Playwright (for advanced browser automation, if not handled by Gemini CLI itself)
+
+---
+
+## Make Commands
+
+This project includes a `Makefile` for convenient shortcuts:
+
+| Command | Description |
+|---------|-------------|
+| `make install` | Installs the skills and agents to `~/.gemini/` |
+| `make uninstall` | Removes the skills and agents from `~/.gemini/` |
+| `make tests` | Runs a quick fetch test to verify setup |
+| `make help` | Lists available make commands |
 
 ---
 
@@ -85,7 +98,7 @@ The tool installs the following skills in your Gemini CLI environment. You can i
 This project is structured to be modular and extensible, with distinct components managed by Gemini CLI skills and agents.
 
 ```
-geo-seo-claude/
+geo-seo-for-geminicli/
 ├── geo/                          # Main skill orchestrator for Gemini CLI
 │   └── SKILL.md                  # Entry point for Gemini CLI commands (e.g., /geo)
 ├── skills/                       # Specialized sub-skills, each performing a specific GEO SEO task.
