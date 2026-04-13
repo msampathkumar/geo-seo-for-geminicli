@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util import Retry
 from urllib.parse import quote_plus
 import sys
 import os
@@ -31,7 +33,7 @@ DEFAULT_HEADERS = {
 
 def fetch_page(url, crawler_name=None):
     """
-    Fetches the content of a given URL.
+    Fetches the content of a given URL with retries for transient errors.
 
     Args:
         url (str): The URL to fetch.
@@ -45,8 +47,20 @@ def fetch_page(url, crawler_name=None):
     if crawler_name and crawler_name in AI_CRAWLERS:
         headers["User-Agent"] = AI_CRAWLERS[crawler_name]
 
+    # Setup session with retries
+    session = requests.Session()
+    retry = Retry(
+        total=3,
+        backoff_factor=1,
+        status_forcelist=[500, 502, 503, 504],
+        raise_on_status=False
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
+
     try:
-        response = requests.get(url, headers=headers, timeout=15, allow_redirects=True)
+        response = session.get(url, headers=headers, timeout=15, allow_redirects=True)
         response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
 
         content = response.text
