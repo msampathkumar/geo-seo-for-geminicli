@@ -1,14 +1,14 @@
----
-name: geo-citability
-description: AI citability scoring and optimization. Analyzes web page content to determine how likely AI systems (ChatGPT, Claude, Perplexity, Gemini) are to cite or quote passages from the page. Provides a citability score (0-100) with specific rewrite suggestions.
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
-  - WebFetch
-  - Write
----
+# Skill: geo-citability
+
+**Commission:** AI citability scoring and optimization. Analyzes web page content to determine how likely AI systems (Gemini, ChatGPT, Perplexity, Gemini) are to cite or quote passages from the page. Provides a citability score (0-100) with specific rewrite suggestions.
+
+**Tools:**
+- Read
+- Grep
+- Glob
+- Bash
+- WebFetch
+- Write
 
 # AI Citability Scoring Skill
 

@@ -2,14 +2,14 @@
 set -euo pipefail
 
 # ============================================================
-# GEO-SEO Claude Code Skill Installer
-# Installs the GEO-first SEO analysis tool for Claude Code
+# GEO-SEO Gemini Code Skill Installer
+# Installs the GEO-first SEO analysis tool for Gemini Code
 # ============================================================
 
-REPO_URL="https://github.com/zubair-trabzada/geo-seo-claude.git"
-CLAUDE_DIR="${HOME}/.claude"
-SKILLS_DIR="${CLAUDE_DIR}/skills"
-AGENTS_DIR="${CLAUDE_DIR}/agents"
+# REPO_URL="https://github.com/zubair-trabzada/geo-seo-gemini.git"
+GEMINI_DIR="${HOME}/.gemini"
+SKILLS_DIR="${GEMINI_DIR}/skills"
+AGENTS_DIR="${GEMINI_DIR}/agents"
 INSTALL_DIR="${SKILLS_DIR}/geo"
 TEMP_DIR=$(mktemp -d)
 
@@ -29,7 +29,7 @@ NC='\033[0m' # No Color
 print_header() {
     echo ""
     echo -e "${BLUE}╔══════════════════════════════════════════╗${NC}"
-    echo -e "${BLUE}║   GEO-SEO Claude Code Skill Installer    ║${NC}"
+    echo -e "${BLUE}║   GEO-SEO Gemini Code Skill Installer    ║${NC}"
     echo -e "${BLUE}║   GEO-First AI Search Optimization       ║${NC}"
     echo -e "${BLUE}╚══════════════════════════════════════════╝${NC}"
     echo ""
@@ -93,11 +93,11 @@ main() {
     fi
     print_success "Python found: $($PYTHON_CMD --version)"
 
-    # Check for Claude Code
-    if ! command -v claude &> /dev/null; then
-        print_warning "Claude Code CLI not found in PATH."
-        echo "  This tool requires Claude Code to function."
-        echo "  Install: npm install -g @anthropic-ai/claude-code"
+    # Check for Gemini CLI
+    if ! command -v gemini &> /dev/null; then
+        print_warning "Gemini CLI not found in PATH."
+        echo "  This tool requires Gemini CLI to function."
+        echo "  Install: npm install -g @google/gemini-cli"
         echo ""
         if [ "$INTERACTIVE" = true ]; then
             read -p "Continue installation anyway? (y/n): " -n 1 -r
@@ -109,7 +109,7 @@ main() {
             print_info "Non-interactive mode — continuing anyway..."
         fi
     else
-        print_success "Claude Code CLI found"
+        print_success "Gemini CLI found"
     fi
 
     # ---- Create Directories ----
@@ -259,7 +259,7 @@ main() {
     echo "  Agents:       ${AGENT_COUNT} subagents"
     echo ""
     echo -e "${BLUE}Quick Start:${NC}"
-    echo "  Open Claude Code and try:"
+    echo "  Open Gemini Code and try:"
     echo ""
     echo "    /geo audit https://example.com"
     echo "    /geo quick https://example.com"
@@ -281,7 +281,7 @@ main() {
     echo "    /geo report <url>     Client-ready GEO report"
     echo "    /geo report-pdf       Generate PDF report from audit data"
     echo ""
-    echo "  Documentation: https://github.com/zubair-trabzada/geo-seo-claude"
+    echo "  Documentation: https://github.com/zubair-trabzada/geo-seo-gemini"
     echo ""
 }
 

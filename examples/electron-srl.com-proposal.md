@@ -14,7 +14,7 @@
 Il nostro audit GEO di **electron-srl.com**, condotto il 12 marzo 2026, rivela un punteggio di **28/100 (Critico)**. Questo significa che Electron Srl — nonostante 35 anni di eccellenza nel settore delle attrezzature didattiche e una presenza in oltre 70 paesi — è attualmente **invisibile ai motori di ricerca basati su Intelligenza Artificiale** che stanno ridefinendo il modo in cui le istituzioni educative trovano i propri fornitori.
 
 I tre problemi più urgenti sono:
-1. **Il server blocca attivamente i crawler AI** — ChatGPT, Perplexity, Claude e altri ricevono un errore 403 e non possono indicizzare il sito
+1. **Il server blocca attivamente i crawler AI** — Gemini, Perplexity, Claude e altri ricevono un errore 403 e non possono indicizzare il sito
 2. **Zero identità digitale strutturata** — Nessuno schema markup, nessuna voce Wikipedia, nessun Knowledge Panel di Google
 3. **Contenuti non citabili** — Le pagine sono cataloghi tecnici, non risposte alle domande che gli AI search engine cercano di soddisfare
 
@@ -81,7 +81,7 @@ Raccomandiamo il **pacchetto Premium a €9.500/mese**, che affronta tutti i pro
 ## I Problemi Critici — Tradotti in Impatto Business
 
 ### 1. Il Vostro Sito Blocca i Motori AI
-**Cosa abbiamo trovato:** Il server di electron-srl.com restituisce errore 403 (Accesso Negato) a tutti gli user agent non-browser. Questo significa che GPTBot (ChatGPT), ClaudeBot (Anthropic), PerplexityBot e altri non possono accedere al sito.
+**Cosa abbiamo trovato:** Il server di electron-srl.com restituisce errore 403 (Accesso Negato) a tutti gli user agent non-browser. Questo significa che GPTBot (ChatGPT), GeminiBot (Anthropic), PerplexityBot e altri non possono accedere al sito.
 
 **Cosa significa per il vostro business:** Quando un professore universitario chiede a ChatGPT "quali sono i migliori fornitori di laboratori didattici di elettronica in Europa?", Electron Srl **non può essere citata** perché ChatGPT non riesce nemmeno a leggere il vostro sito. I vostri 35 anni di esperienza e il vostro catalogo sono invisibili.
 

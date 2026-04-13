@@ -23,7 +23,7 @@
     {
       "severity": "critical",
       "title": "Server Blocks All AI Crawlers (HTTP 403)",
-      "description": "All fetch attempts by non-browser user agents return HTTP 403 Forbidden. GPTBot, ClaudeBot, PerplexityBot, and most AI crawlers cannot index this site. The site is invisible to 4 out of 5 AI platforms. Likely caused by a WordPress security plugin (Wordfence, Sucuri, or Cloudflare rules). Fix: whitelist all 14 AI crawler user agents. Effort: 2-4 hours."
+      "description": "All fetch attempts by non-browser user agents return HTTP 403 Forbidden. GPTBot, GeminiBot, PerplexityBot, and most AI crawlers cannot index this site. The site is invisible to 4 out of 5 AI platforms. Likely caused by a security plugin (Wordfence, Sucuri, or Cloudflare rules). Fix: whitelist all 14 AI crawler user agents. Effort: 2-4 hours."
     },
     {
       "severity": "critical",

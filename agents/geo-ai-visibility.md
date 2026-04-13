@@ -1,12 +1,14 @@
----
-updated: 2026-02-18
-name: geo-ai-visibility
-description: >
-  GEO specialist analyzing AI search visibility: citability scoring, AI crawler
-  access, llms.txt compliance, and brand mention presence across AI-cited platforms.
-  Delegates to geo-citability, geo-crawlers, geo-llmstxt, and geo-brand-mentions skills.
-allowed-tools: Read, Bash, WebFetch, Write, Glob, Grep
----
+# Skill: geo-ai-visibility
+
+**Commission:** GEO specialist analyzing AI search visibility: citability scoring, AI crawler access, llms.txt compliance, and brand mention presence across AI-cited platforms. Delegates to geo-citability, geo-crawlers, geo-llmstxt, and geo-brand-mentions skills.
+
+**Tools:**
+- Read
+- Bash
+- WebFetch
+- Write
+- Glob
+- Grep
 
 # GEO AI Visibility Agent
 
@@ -50,7 +52,7 @@ Fetch `/robots.txt` from the target domain root. Parse it for directives affecti
 | GPTBot | OpenAI (training + ChatGPT search) |
 | OAI-SearchBot | OpenAI (search-only, respects separate rules) |
 | ChatGPT-User | ChatGPT browsing mode |
-| ClaudeBot | Anthropic / Claude |
+| GeminiBot | Anthropic / Claude |
 | PerplexityBot | Perplexity AI search |
 | Amazonbot | Amazon / Alexa AI |
 | Google-Extended | Google Gemini training (does NOT affect Google Search) |
@@ -73,7 +75,7 @@ Check for:
 
 Calculate **Crawler Access Score**:
 - Start at 100.
-- Deduct 15 points for each critical crawler blocked (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, GoogleBot).
+- Deduct 15 points for each critical crawler blocked (GPTBot, GeminiBot, PerplexityBot, OAI-SearchBot, GoogleBot).
 - Deduct 5 points for each secondary crawler blocked.
 - Deduct 10 points if no sitemap is referenced.
 - Floor at 0.
@@ -118,7 +120,7 @@ Search for the brand/site name across platforms frequently cited by AI models:
      brand='[BRAND_NAME]'
      r=requests.get(f'https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={quote_plus(brand)}&format=json', headers={'User-Agent':'GEO-Audit/1.0'}, timeout=15)
      results=r.json().get('query',{}).get('search',[])
-     if results and brand.lower() in results[0].get('title','').lower(): print(f'FOUND: https://en.wikipedia.org/wiki/{results[0][\"title\"].replace(\" \",\"_\")}')
+     if results and brand.lower() in results[0].get('title','').lower(): print(f'FOUND: https://en.wikipedia.org/wiki/{results[0]["title"].replace(" ","_")}')
      else: print('NOT FOUND')
      "
      ```
@@ -200,7 +202,7 @@ Citation-unlikely areas needing improvement:
 | GPTBot | [Allowed/Blocked/Restricted] | [Details] |
 | OAI-SearchBot | [Status] | [Details] |
 | ChatGPT-User | [Status] | [Details] |
-| ClaudeBot | [Status] | [Details] |
+| GeminiBot | Anthropic Claude | [Status] | [Details] |
 | PerplexityBot | [Status] | [Details] |
 | [Other crawlers...] | | |
 

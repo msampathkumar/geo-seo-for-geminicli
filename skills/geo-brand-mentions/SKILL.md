@@ -1,14 +1,14 @@
----
-name: geo-brand-mentions
-description: Brand mention and authority scanner for AI visibility. Analyzes brand presence across platforms that AI models rely on for entity recognition and citation decisions. Produces a Brand Authority Score (0-100) with platform-specific recommendations.
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
-  - WebFetch
-  - Write
----
+# Skill: geo-brand-mentions
+
+**Commission:** Brand mention and authority scanner for AI visibility. Analyzes brand presence across platforms that AI models rely on for entity recognition and citation decisions. Produces a Brand Authority Score (0-100) with platform-specific recommendations.
+
+**Tools:**
+- Read
+- Grep
+- Glob
+- Bash
+- WebFetch
+- Write
 
 # Brand Mention Scanner Skill
 
@@ -252,8 +252,8 @@ r = requests.get(api_url, headers={'User-Agent': 'GEO-Audit/1.0'}, timeout=15)
 data = r.json()
 results = data.get('query', {}).get('search', [])
 if results and brand.lower() in results[0].get('title', '').lower():
-    print(f'WIKIPEDIA PAGE EXISTS: {results[0][\"title\"]}')
-    print(f'URL: https://en.wikipedia.org/wiki/{results[0][\"title\"].replace(\" \", \"_\")}')
+    print(f'WIKIPEDIA PAGE EXISTS: {results[0]["title"]}')
+    print(f'URL: https://en.wikipedia.org/wiki/{results[0]["title"].replace(" ", "_")}')
 else:
     print('No direct Wikipedia page found')
 # Check Wikidata
@@ -262,7 +262,7 @@ r2 = requests.get(wd_url, headers={'User-Agent': 'GEO-Audit/1.0'}, timeout=15)
 wd = r2.json()
 entities = wd.get('search', [])
 if entities:
-    print(f'WIKIDATA ENTRY: {entities[0].get(\"id\", \"\")} — {entities[0].get(\"description\", \"\")}')
+    print(f'WIKIDATA ENTRY: {entities[0].get("id", "")} — {entities[0].get("description", "")}')
 "
 ```
 

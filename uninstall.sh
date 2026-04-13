@@ -2,12 +2,13 @@
 set -euo pipefail
 
 # ============================================================
-# GEO-SEO Claude Code Skill Uninstaller
+# GEO-SEO Gemini CLI Tool Uninstaller
+# Removes the GEO-first SEO analysis tool components.
 # ============================================================
 
-CLAUDE_DIR="${HOME}/.claude"
-SKILLS_DIR="${CLAUDE_DIR}/skills"
-AGENTS_DIR="${CLAUDE_DIR}/agents"
+# Note: The CLAUDE_DIR variable might be a remnant if the tool is now managed by Gemini CLI's skill system.
+# This script focuses on removing project-specific files installed by the install.sh script.
+# It does NOT uninstall the Gemini CLI itself.
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -16,59 +17,53 @@ BLUE='\033[0;34m'
 NC='\033[0m'
 
 echo ""
-echo -e "${YELLOW}GEO-SEO Claude Code Skill Uninstaller${NC}"
+echo -e "${YELLOW}GEO-SEO Gemini CLI Tool Uninstaller${NC}"
 echo ""
-echo "This will remove the following:"
-echo ""
-
-# List what will be removed
-[ -d "$SKILLS_DIR/geo" ] && echo "  → ${SKILLS_DIR}/geo/"
-for skill_dir in "$SKILLS_DIR"/geo-*/; do
-    [ -d "$skill_dir" ] && echo "  → ${skill_dir}"
-done
-for agent_file in "$AGENTS_DIR"/geo-*.md; do
-    [ -f "$agent_file" ] && echo "  → ${agent_file}"
-done
-
-echo ""
-read -p "Are you sure you want to uninstall? (y/n): " -n 1 -r
+echo "This script will remove the GEO-SEO tool's local project files."
+echo "It does NOT uninstall the Gemini CLI itself. To uninstall the Gemini CLI, use:"
+echo -e "${BLUE}  npm uninstall -g @google/gemini-cli${NC}"
 echo ""
 
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    echo "Uninstall cancelled."
-    exit 0
+# --- Removal Logic ---
+# Assumes files were installed into a structure that might be under ~/.gemini/skills/geo or similar.
+# The exact path can vary, so we try common locations.
+
+GEMINI_SKILL_PATH_1="~/.gemini/skills/geo"
+GEMINI_SKILL_PATH_2="${HOME}/.gemini/skills/geo" # Explicitly expand home directory
+
+echo -e "${YELLOW}→ Checking for installed GEO-SEO Gemini CLI skill files...${NC}"
+
+REMOVED_COUNT=0
+
+# Attempt to remove from common Gemini CLI skill paths
+if [ -d "$GEMINI_SKILL_PATH_1" ]; then
+    echo -e "${BLUE}  Found at ${GEMINI_SKILL_PATH_1}. Removing...${NC}"
+    rm -rf "$GEMINI_SKILL_PATH_1"
+    echo -e "${GREEN}✓ Removed: ${GEMINI_SKILL_PATH_1}${NC}"
+    REMOVED_COUNT=$((REMOVED_COUNT + 1))
+elif [ -d "$GEMINI_SKILL_PATH_2" ]; then
+    echo -e "${BLUE}  Found at ${GEMINI_SKILL_PATH_2}. Removing...${NC}"
+    rm -rf "$GEMINI_SKILL_PATH_2"
+    echo -e "${GREEN}✓ Removed: ${GEMINI_SKILL_PATH_2}${NC}"
+    REMOVED_COUNT=$((REMOVED_COUNT + 1))
+fi
+
+# Check for old Claude-specific directories and provide advice
+CLAUDE_DIR_REMNANT="${HOME}/.claude"
+if [ -d "$CLAUDE_DIR_REMNANT" ]; then
+    echo -e "${YELLOW}→ Found old Claude-specific directory: ${CLAUDE_DIR_REMNANT}${NC}"
+    echo -e "${BLUE}  This directory is likely a remnant from previous installations.${NC}"
+    echo -e "${BLUE}  If it's no longer needed, you can manually remove it:${NC}"
+    echo -e "${BLUE}    rm -rf ${CLAUDE_DIR_REMNANT}${NC}"
+fi
+
+if [ "$REMOVED_COUNT" -eq 0 ]; then
+    echo -e "${BLUE}→ No GEO-SEO Gemini CLI skill files found at common locations. No project files removed by this script.${NC}"
 fi
 
 echo ""
-
-# Remove main skill
-if [ -d "$SKILLS_DIR/geo" ]; then
-    rm -rf "$SKILLS_DIR/geo"
-    echo -e "${GREEN}✓ Removed main skill${NC}"
-fi
-
-# Remove sub-skills
-for skill_dir in "$SKILLS_DIR"/geo-*/; do
-    if [ -d "$skill_dir" ]; then
-        skill_name=$(basename "$skill_dir")
-        rm -rf "$skill_dir"
-        echo -e "${GREEN}✓ Removed ${skill_name}${NC}"
-    fi
-done
-
-# Remove agents
-for agent_file in "$AGENTS_DIR"/geo-*.md; do
-    if [ -f "$agent_file" ]; then
-        agent_name=$(basename "$agent_file")
-        rm -f "$agent_file"
-        echo -e "${GREEN}✓ Removed ${agent_name}${NC}"
-    fi
-done
-
+echo -e "${GREEN}Uninstall process finished.${NC}"
 echo ""
-echo -e "${GREEN}GEO-SEO skill has been uninstalled.${NC}"
-echo ""
-echo "Note: Python dependencies were not removed."
-echo "To remove them manually:"
-echo "  pip uninstall beautifulsoup4 requests lxml playwright Pillow validators"
+echo "To remove Python dependencies, if installed globally, you may need to run:"
+echo "  pip uninstall beautifulsoup4 requests lxml Pillow validators"
 echo ""

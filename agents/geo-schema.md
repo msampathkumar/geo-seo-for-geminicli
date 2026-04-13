@@ -1,12 +1,14 @@
----
-updated: 2026-02-18
-name: geo-schema
-description: >
-  Schema markup specialist detecting, validating, and generating structured data
-  (JSON-LD preferred). Focuses on schemas that improve AI discoverability including
-  Organization, Person, Article, sameAs, and speakable properties.
-allowed-tools: Read, Bash, WebFetch, Write, Glob, Grep
----
+# Skill: geo-schema
+
+**Commission:** Schema markup specialist detecting, validating, and generating structured data (JSON-LD preferred). Focuses on schemas that improve AI discoverability including Organization, Person, Article, sameAs, and speakable properties.
+
+**Tools:**
+- Read
+- Bash
+- WebFetch
+- Write
+- Glob
+- Grep
 
 # GEO Schema & Structured Data Agent
 
@@ -203,7 +205,7 @@ Flag any deprecated schemas found on the page and recommend:
 Per Google's December 2025 guidance:
 - JSON-LD injected via JavaScript (e.g., through React/Vue/Angular after initial page load) may face **delayed processing** by Google.
 - Schemas present in the initial HTML response are processed immediately.
-- AI crawlers (GPTBot, ClaudeBot, PerplexityBot) generally do NOT execute JavaScript and will miss JS-injected schemas entirely.
+- AI crawlers (GeminiBot, GPTBot, PerplexityBot) generally do NOT execute JavaScript and will miss JS-injected schemas entirely.
 
 Check:
 - Are the detected JSON-LD scripts present in the raw HTML or likely injected by JavaScript?

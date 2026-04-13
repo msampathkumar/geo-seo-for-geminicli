@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="GEO-SEO Claude Code Skill" width="900"/>
+  <img src="assets/banner.svg" alt="GEO-SEO Gemini CLI Skill" width="900"/>
 </p>
 
 <p align="center">
   <strong>GEO-first, SEO-supported.</strong> Optimize websites for AI-powered search engines<br/>
-  (ChatGPT, Claude, Perplexity, Gemini, Google AI Overviews) while maintaining traditional SEO foundations.
+  (Gemini, ChatGPT, Claude, Perplexity, Google AI Overviews) while maintaining traditional SEO foundations.
 </p>
 
 <p align="center">
@@ -28,32 +28,35 @@
 
 ## Quick Start
 
-### One-Command Install (macOS/Linux)
+### Installation (macOS/Linux)
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/zubair-trabzada/geo-seo-claude/main/install.sh | bash
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/zubair-trabzada/geo-seo-claude.git
+    cd geo-seo-claude
+    ```
+2.  **Install dependencies:**
+    ```bash
+    ./install.sh
+    ```
+    *(This script installs Python dependencies and potentially other requirements needed for the scripts and agents.)*
 
-### Manual Install
+### Gemini CLI Integration
 
-```bash
-git clone https://github.com/zubair-trabzada/geo-seo-claude.git
-cd geo-seo-claude
-./install.sh
-```
+Once dependencies are installed via `./install.sh`, you can interact with the GEO SEO features via the Gemini CLI. The project's primary skill, `geo/SKILL.md`, is designed to be discoverable and executable by the Gemini CLI. Commands are invoked using the `/geo` prefix. The `install.sh` script has been updated to check for and guide the installation of the Gemini CLI.
 
 ### Requirements
 
 - Python 3.8+
-- Claude Code CLI
+- Gemini CLI installed and configured (install using `npm install -g @google/gemini-cli`)
 - Git
-- Optional: Playwright (for screenshots)
+- Optional: Playwright (for advanced browser automation, if not handled by Gemini CLI itself)
 
 ---
 
-## Commands
+## Gemini CLI Commands
 
-Open Claude Code and use these commands:
+Use these commands within your Gemini CLI session:
 
 | Command | What It Does |
 |---------|-------------|
@@ -72,66 +75,69 @@ Open Claude Code and use these commands:
 
 ---
 
-## Architecture
+## Project Structure & Architecture
+
+This project is structured to be modular and extensible, with distinct components managed by Gemini CLI skills and agents.
 
 ```
 geo-seo-claude/
-├── geo/                          # Main skill orchestrator
-│   └── SKILL.md                  # Primary skill file with commands & routing
-├── skills/                       # 11 specialized sub-skills
-│   ├── geo-audit/                # Full audit orchestration & scoring
-│   ├── geo-citability/           # AI citation readiness scoring
-│   ├── geo-crawlers/             # AI crawler access analysis
-│   ├── geo-llmstxt/              # llms.txt standard analysis & generation
-│   ├── geo-brand-mentions/       # Brand presence on AI-cited platforms
-│   ├── geo-platform-optimizer/   # Platform-specific AI search optimization
-│   ├── geo-schema/               # Structured data for AI discoverability
-│   ├── geo-technical/            # Technical SEO foundations
-│   ├── geo-content/              # Content quality & E-E-A-T
-│   ├── geo-report/               # Client-ready markdown report generation
-│   └── geo-report-pdf/           # Professional PDF report with charts
-├── agents/                       # 5 parallel subagents
-│   ├── geo-ai-visibility.md      # GEO audit, citability, crawlers, brands
-│   ├── geo-platform-analysis.md  # Platform-specific optimization
-│   ├── geo-technical.md          # Technical SEO analysis
-│   ├── geo-content.md            # Content & E-E-A-T analysis
-│   └── geo-schema.md             # Schema markup analysis
-├── scripts/                      # Python utilities
-│   ├── fetch_page.py             # Page fetching & parsing
-│   ├── citability_scorer.py      # AI citability scoring engine
-│   ├── brand_scanner.py          # Brand mention detection
-│   ├── llmstxt_generator.py      # llms.txt validation & generation
-│   └── generate_pdf_report.py    # PDF report generator (ReportLab)
-├── schema/                       # JSON-LD templates
-│   ├── organization.json         # Organization schema (with sameAs)
-│   ├── local-business.json       # LocalBusiness schema
-│   ├── article-author.json       # Article + Person schema (E-E-A-T)
-│   ├── software-saas.json        # SoftwareApplication schema
-│   ├── product-ecommerce.json    # Product schema with offers
-│   └── website-searchaction.json # WebSite + SearchAction schema
-├── install.sh                    # One-command installer
-├── uninstall.sh                  # Uninstaller
-├── requirements.txt              # Python dependencies
-└── README.md                     # This file
+├── geo/                          # Main skill orchestrator for Gemini CLI
+│   └── SKILL.md                  # Entry point for Gemini CLI commands (e.g., /geo)
+├── skills/                       # Specialized sub-skills, each performing a specific GEO SEO task.
+│   ├── geo-audit/                # Orchestrates full audit, integrates agents, and scores results.
+│   ├── geo-citability/           # Focuses on AI citation readiness scoring.
+│   ├── geo-crawlers/             # Analyzes AI crawler access and robots.txt directives.
+│   ├── geo-llmstxt/              # Handles analysis and generation of the llms.txt standard file.
+│   ├── geo-brand-mentions/       # Scans for brand presence on AI-cited platforms.
+│   ├── geo-platform-optimizer/   # Optimizes for specific AI search platforms.
+│   ├── geo-schema/               # Manages structured data (JSON-LD) for AI discoverability.
+│   ├── geo-technical/            # Assesses technical SEO foundations.
+│   ├── geo-content/              # Evaluates content quality and E-E-A-T signals.
+│   ├── geo-report/               # Generates client-ready markdown reports.
+│   └── geo-report-pdf/           # Creates professional PDF reports with visualizations.
+├── agents/                       # Core analysis agents that perform complex computations or data fetching.
+│   ├── geo-ai-visibility.md      # Combines audits, citability, crawlers, and brand mentions.
+│   ├── geo-platform-analysis.md  # Analyzes readiness for specific AI platforms.
+│   ├── geo-technical.md          # Performs deep technical SEO analysis.
+│   ├── geo-content.md            # Assesses content quality and E-E-A-T signals.
+│   └── geo-schema.md             # Analyzes and validates schema markup.
+├── scripts/                      # Utility scripts for data fetching, processing, and report generation.
+│   ├── fetch_page.py             # Fetches and parses web page content.
+│   ├── citability_scorer.py      # The engine for AI citability scoring.
+│   ├── brand_scanner.py          # Detects and analyzes brand mentions.
+│   ├── llmstxt_generator.py      # Validates and generates llms.txt files.
+│   └── generate_pdf_report.py    # Uses ReportLab to generate PDF reports.
+├── schema/                       # JSON-LD templates for structured data to enhance AI discoverability.
+│   ├── organization.json         # Organization schema (with sameAs).
+│   ├── local-business.json       # LocalBusiness schema.
+│   ├── article-author.json       # Article + Person schema (for E-E-A-T).
+│   ├── software-saas.json        # SoftwareApplication schema.
+│   ├── product-ecommerce.json    # Product schema with offers.
+│   └── website-searchaction.json # WebSite + SearchAction schema.
+├── install.sh                    # Script to install project dependencies (Python, etc.).
+├── uninstall.sh                  # Script to uninstall project components.
+├── requirements.txt              # Lists Python dependencies.
+└── README.md                     # This file.
 ```
 
 ---
 
 ## How It Works
 
-### Full Audit Flow
+### Full Audit Flow (via Gemini CLI)
 
-When you run `/geo audit https://example.com`:
+When you execute a command like `/geo audit https://example.com` within the Gemini CLI:
 
-1. **Discovery** — Fetches homepage, detects business type, crawls sitemap
-2. **Parallel Analysis** — Launches 5 subagents simultaneously:
-   - AI Visibility (citability, crawlers, llms.txt, brand mentions)
-   - Platform Analysis (ChatGPT, Perplexity, Google AIO readiness)
-   - Technical SEO (Core Web Vitals, SSR, security, mobile)
-   - Content Quality (E-E-A-T, readability, freshness)
-   - Schema Markup (detection, validation, generation)
-3. **Synthesis** — Aggregates scores, generates composite GEO Score (0-100)
-4. **Report** — Outputs prioritized action plan with quick wins
+1.  **Orchestration:** The `geo/SKILL.md` file, recognized by the Gemini CLI, routes the command to the appropriate sub-skill (e.g., `geo-audit`).
+2.  **Discovery & Initialization:** The `geo-audit` skill or its associated agents initiate by fetching the target URL, detecting business types, and crawling sitemaps using utilities from the `scripts/` directory.
+3.  **Parallel Analysis:** The Gemini CLI environment efficiently launches the core analysis agents (`agents/` directory) in parallel. These agents leverage specialized sub-skills (`skills/`) and utility scripts for tasks such as:
+    *   **AI Visibility:** Assessing citability, crawler access, and brand mentions.
+    *   **Platform Analysis:** Evaluating readiness for Gemini, ChatGPT, Perplexity, and Google AI Overviews.
+    *   **Technical SEO:** Checking Core Web Vitals, SSR, security, and mobile-friendliness.
+    *   **Content Quality:** Evaluating E-E-A-T, readability, and freshness.
+    *   **Schema Markup:** Detecting, validating, and potentially generating JSON-LD from `schema/` templates.
+4.  **Synthesis & Scoring:** All collected data and scores are aggregated. A composite GEO Score (0-100) is calculated based on weighted categories.
+5.  **Reporting:** The final output is presented, often with an option to generate detailed reports (markdown or PDF) using `scripts/generate_pdf_report.py`, providing prioritized action plans.
 
 ### Scoring Methodology
 
@@ -152,13 +158,13 @@ When you run `/geo audit https://example.com`:
 Analyzes content blocks for AI citation readiness. Optimal AI-cited passages are 134-167 words, self-contained, fact-rich, and directly answer questions.
 
 ### AI Crawler Analysis
-Checks robots.txt for 14+ AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.) and provides specific allow/block recommendations.
+Checks robots.txt for 14+ AI crawlers (GeminiBot, GPTBot, GeminiBot, PerplexityBot, etc.) and provides specific allow/block recommendations.
 
 ### Brand Mention Scanning
 Brand mentions correlate 3x more strongly with AI visibility than backlinks. Scans YouTube, Reddit, Wikipedia, LinkedIn, and 7+ other platforms.
 
 ### Platform-Specific Optimization
-Only 11% of domains are cited by both ChatGPT and Google AI Overviews for the same query. Provides tailored recommendations per platform.
+Only 11% of domains are cited by both Gemini and Google AI Overviews for the same query. Provides tailored recommendations per platform.
 
 ### llms.txt Generation
 Generates the emerging llms.txt standard file that helps AI crawlers understand your site structure.
@@ -170,16 +176,18 @@ Generates professional GEO reports in markdown or PDF format. PDF reports includ
 
 ## Use Cases
 
-- **GEO Agencies** — Run client audits and generate deliverables
-- **Marketing Teams** — Monitor and improve AI search visibility
-- **Content Creators** — Optimize content for AI citations
-- **Local Businesses** — Get found by AI assistants
-- **SaaS Companies** — Improve entity recognition across AI platforms
-- **E-commerce** — Optimize product pages for AI shopping recommendations
+-   **GEO Agencies** — Run client audits and generate deliverables.
+-   **Marketing Teams** — Monitor and improve AI search visibility.
+-   **Content Creators** — Optimize content for AI citations.
+-   **Local Businesses** — Get found by AI assistants.
+-   **SaaS Companies** — Improve entity recognition across AI platforms.
+-   **E-commerce** — Optimize product pages for AI shopping recommendations.
 
 ---
 
 ## Uninstall
+
+To remove the project's components (Python dependencies, scripts, etc.):
 
 ```bash
 ./uninstall.sh
@@ -187,7 +195,12 @@ Generates professional GEO reports in markdown or PDF format. PDF reports includ
 
 Or manually:
 ```bash
-rm -rf ~/.claude/skills/geo ~/.claude/skills/geo-* ~/.claude/agents/geo-*.md
+# Remove installed Python packages (if installed in a virtual environment)
+# pip uninstall -r requirements.txt
+
+# Remove project scripts and data (adjust path if skill was installed globally)
+rm -rf ~/.gemini/skills/geo ~/.gemini/skills/geo-* # Example: may vary based on Gemini CLI installation method
+# If installed locally and linked, this might be project-specific removal.
 ```
 
 ---
@@ -199,10 +212,10 @@ The tool is free. Learning how to monetize it is where the community comes in.
 **[Join the AI Workshop Community →](https://skool.com/aiworkshop)**
 
 Inside you'll get:
-- **Video walkthroughs** — Step-by-step setup, running audits, reading results
-- **Client acquisition playbook** — How to find prospects, pitch GEO services, and close deals
-- **Live office hours** — Bring your audit results, get direct help
-- **GEO agency pricing & templates** — Proposal docs, cold outreach scripts, onboarding workflows
+-   **Video walkthroughs** — Step-by-step setup, running audits, reading results.
+-   **Client acquisition playbook** — How to find prospects, pitch GEO services, and close deals.
+-   **Live office hours** — Bring your audit results, get direct help.
+-   **GEO agency pricing & templates** — Proposal docs, cold outreach scripts, onboarding workflows.
 
 GEO agencies charge $2K–$12K/month. This tool does the audit. The community teaches you how to sell it.
 

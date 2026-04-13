@@ -1,10 +1,14 @@
----
-name: geo-technical
-description: Technical SEO audit with GEO-specific checks — crawlability, indexability, security, performance, SSR, and AI crawler access
-version: 1.0.0
-author: geo-seo-claude
-tags: [geo, technical-seo, core-web-vitals, ssr, crawlability, security, performance]
----
+# Skill: geo-technical
+
+**Commission:** Technical SEO audit with GEO-specific checks — crawlability, indexability, security, performance, SSR, and AI crawler access
+
+**Tools:**
+- Read
+- Grep
+- Glob
+- Bash
+- WebFetch
+- Write
 
 # GEO Technical SEO Audit
 
@@ -319,7 +323,8 @@ Even Googlebot, which does execute JavaScript, deprioritizes JS-rendered content
 
 ### 8.1 Time to First Byte (TTFB)
 - Target: **< 800ms** (ideally < 200ms)
-- Measure with curl: `curl -o /dev/null -s -w 'TTFB: %{time_starttransfer}s\n' [URL]`
+- Measure with curl: `curl -o /dev/null -s -w 'TTFB: %{time_starttransfer}s
+' [URL]`
 - If TTFB > 800ms: check server location, caching, database queries, CDN usage
 
 ### 8.2 Resource Optimization

@@ -1,12 +1,14 @@
----
-updated: 2026-02-18
-name: geo-technical
-description: >
-  Technical SEO specialist analyzing crawlability, indexability, security,
-  URL structure, mobile optimization, Core Web Vitals (INP replaces FID),
-  server-side rendering, and JavaScript dependency.
-allowed-tools: Read, Bash, WebFetch, Write, Glob, Grep
----
+# Skill: geo-technical
+
+**Commission:** Technical SEO specialist analyzing crawlability, indexability, security, URL structure, mobile optimization, Core Web Vitals (INP replaces FID), server-side rendering, and JavaScript dependency.
+
+**Tools:**
+- Read
+- Bash
+- WebFetch
+- Write
+- Glob
+- Grep
 
 # GEO Technical SEO Agent
 
@@ -152,7 +154,7 @@ NOTE: INP replaced FID (First Input Delay) as a Core Web Vital in March 2024.
 
 ### Step 8: Server-Side Rendering and JavaScript Dependency (CRITICAL)
 
-This is the most important check for GEO. AI crawlers (GPTBot, ClaudeBot, PerplexityBot) generally do NOT execute JavaScript. Content that requires JS to render is invisible to AI search.
+This is the most important check for GEO. AI crawlers (GeminiBot, GPTBot, PerplexityBot) generally do NOT execute JavaScript. Content that requires JS to render is invisible to AI search.
 
 **Check for Client-Side Rendering Indicators:**
 - Empty or minimal `<body>` content with a single root div (e.g., `<div id="root"></div>` or `<div id="app"></div>`)

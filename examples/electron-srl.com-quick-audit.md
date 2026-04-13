@@ -1,6 +1,6 @@
 # GEO Quick Audit — electron-srl.com
 **Date:** 2026-03-12
-**Analyst:** GEO-SEO Claude
+**Analyst:** GEO-SEO Gemini CLI
 **Type:** Quick Snapshot (live data)
 **Method:** Web search + multi-endpoint crawl + brand platform scan
 
@@ -58,7 +58,7 @@
 
 ### FINDING 1: Site Returns 403 to Non-Browser User Agents
 **Evidence:** All fetch attempts (Python requests, WebFetch tool) returned HTTP 403 Forbidden. Only browser-like requests and Google's crawler appear to work.
-**Impact:** GPTBot, ClaudeBot, PerplexityBot, and most AI crawlers will receive 403 and **cannot index** this site. The site is effectively invisible to all AI search platforms except possibly Google AIO (via Googlebot).
+**Impact:** GPTBot, GeminiBot, PerplexityBot, and most AI crawlers will receive 403 and **cannot index** this site. The site is effectively invisible to all AI search platforms except possibly Google AIO (via Googlebot).
 **Severity:** CRITICAL — This single issue makes the site invisible to 4 out of 5 AI platforms.
 **Fix:** Review server configuration (likely WordPress security plugin like Wordfence, Sucuri, or Cloudflare rules) that blocks non-browser user agents. Whitelist all 14 AI crawler user agents.
 **Effort:** 2-4 hours depending on hosting setup

@@ -1,20 +1,20 @@
----
-name: geo-audit
-description: Full website GEO+SEO audit with parallel subagent delegation. Orchestrates a comprehensive Generative Engine Optimization audit across AI citability, platform analysis, technical infrastructure, content quality, and schema markup. Produces a composite GEO Score (0-100) with prioritized action plan.
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - Bash
-  - WebFetch
-  - Write
----
+# Skill: geo-audit
+
+**Commission:** Full website GEO+SEO audit with parallel subagent delegation. Orchestrates a comprehensive Generative Engine Optimization audit across AI citability, platform analysis, technical infrastructure, content quality, and schema markup. Produces a composite GEO Score (0-100) with prioritized action plan.
+
+**Tools:**
+- Read
+- Grep
+- Glob
+- Bash
+- WebFetch
+- Write
 
 # GEO Audit Orchestration Skill
 
 ## Purpose
 
-This skill performs a comprehensive Generative Engine Optimization (GEO) audit of any website. GEO is the practice of optimizing web content so that AI systems (ChatGPT, Claude, Perplexity, Gemini, etc.) can discover, understand, cite, and recommend it. This audit measures how well a site performs across all GEO dimensions and produces an actionable improvement plan.
+This skill performs a comprehensive Generative Engine Optimization (GEO) audit of any website. GEO is the practice of optimizing web content so that AI systems (Gemini, ChatGPT, Perplexity, Google AI Overviews) can discover, understand, cite, and recommend it. This audit measures how well a site performs across all GEO dimensions and produces an actionable improvement plan.
 
 ## Key Insight
 
@@ -161,7 +161,7 @@ Every issue found during the audit is classified by severity:
 - Brand not recognized as an entity by any AI system
 
 ### High (Fix Within 1 Week)
-- Key AI crawlers (GPTBot, ClaudeBot, PerplexityBot) blocked
+- Key AI crawlers (GPTBot, GeminiBot, PerplexityBot) blocked
 - No llms.txt file present
 - Zero question-answering content blocks on key pages
 - Missing Organization or LocalBusiness schema
@@ -335,3 +335,4 @@ Generate a file called `GEO-AUDIT-REPORT.md` with the following structure:
 - Extra weight on: Case studies (citability), expertise demonstration, thought leadership
 - Check for: Portfolio schema, team credentials, industry-specific expertise signals
 - Key schema: Organization, Service, Person (team), Review
+```
