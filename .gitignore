@@ -49,6 +49,7 @@ screenshots/
 *.png
 *.jpg
 *.jpeg
+!assets/banner.png
 !schema/*.json
 
 # Test files
