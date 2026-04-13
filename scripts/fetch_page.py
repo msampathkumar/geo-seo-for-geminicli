@@ -5,11 +5,12 @@ from urllib.parse import quote_plus
 import sys
 import os
 import re
+import json
 
 # Common AI crawler user agents for testing
 AI_CRAWLERS = {
     "GPTBot": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)",
-    "GeminiBot": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GeminiBot/1.0; +https://www.anthropic.com/claude-bot)",
+    "GeminiBot": "GEO-Audit/1.0 (Gemini CLI)",
     "PerplexityBot": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)",
     "GoogleBot": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
     "BingBot": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",

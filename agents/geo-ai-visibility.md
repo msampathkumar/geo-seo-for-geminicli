@@ -52,7 +52,7 @@ Fetch `/robots.txt` from the target domain root. Parse it for directives affecti
 | GPTBot | OpenAI (training + ChatGPT search) |
 | OAI-SearchBot | OpenAI (search-only, respects separate rules) |
 | ChatGPT-User | ChatGPT browsing mode |
-| GeminiBot | Anthropic / Claude |
+| GeminiBot | Google Gemini |
 | PerplexityBot | Perplexity AI search |
 | Amazonbot | Amazon / Alexa AI |
 | Google-Extended | Google Gemini training (does NOT affect Google Search) |
@@ -202,7 +202,7 @@ Citation-unlikely areas needing improvement:
 | GPTBot | [Allowed/Blocked/Restricted] | [Details] |
 | OAI-SearchBot | [Status] | [Details] |
 | ChatGPT-User | [Status] | [Details] |
-| GeminiBot | Anthropic Claude | [Status] | [Details] |
+| GeminiBot | [Status] | [Details] |
 | PerplexityBot | [Status] | [Details] |
 | [Other crawlers...] | | |
 

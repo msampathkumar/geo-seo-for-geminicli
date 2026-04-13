@@ -19,7 +19,7 @@ This skill generates a professional, visually polished PDF report from GEO audit
 ## Prerequisites
 
 - **ReportLab** must be installed: `pip install reportlab`
-- The PDF generation script is located at: `~/.claude/skills/geo/scripts/generate_pdf_report.py`
+- The PDF generation script is located at: `scripts/generate_pdf_report.py`
 - Run a full GEO audit first (using `/geo-audit`) to have data to include in the report
 
 ## How to Generate a PDF Report
@@ -71,7 +71,7 @@ After running a full `/geo-audit`, collect all scores, findings, and recommendat
     ],
     "crawler_access": {
         "GPTBot": {"platform": "ChatGPT", "status": "Allowed", "recommendation": "Keep allowed"},
-        "ClaudeBot": {"platform": "Claude", "status": "Blocked", "recommendation": "Unblock for visibility"}
+        "GeminiBot": {"platform": "Gemini", "status": "Blocked", "recommendation": "Unblock for visibility"}
     }
 }
 ```
@@ -92,7 +92,7 @@ EOF
 Run the PDF generation script:
 
 ```bash
-python3 ~/.claude/skills/geo/scripts/generate_pdf_report.py /tmp/geo-audit-data.json GEO-REPORT-[brand].pdf
+python3 scripts/generate_pdf_report.py /tmp/geo-audit-data.json GEO-REPORT-[brand].pdf
 ```
 
 The script will produce a professional PDF report with:
@@ -135,7 +135,7 @@ When the user runs this skill, follow this exact sequence:
 
 6. **Run the PDF generator**:
    ```bash
-   python3 ~/.claude/skills/geo/scripts/generate_pdf_report.py /tmp/geo-audit-data.json "GEO-REPORT-[brand_name].pdf"
+   python3 scripts/generate_pdf_report.py /tmp/geo-audit-data.json "GEO-REPORT-[brand_name].pdf"
    ```
 
 7. **Report success** — Tell the user the PDF was generated, its location, and file size.
@@ -154,7 +154,7 @@ When extracting data from existing GEO markdown reports, look for these patterns
 - **GEO Score**: Look for "GEO Score: XX/100" or "Overall: XX/100" or "GEO Readiness Score: XX"
 - **Category Scores**: Look for score tables with columns like "Component | Score | Weight"
 - **Platform Scores**: Look for tables with "Google AI Overviews", "ChatGPT", "Perplexity", etc.
-- **Crawler Status**: Look for tables with "Allowed" or "Blocked" status for crawlers like GPTBot, ClaudeBot
+- **Crawler Status**: Look for tables with "Allowed" or "Blocked" status for crawlers like GPTBot, GeminiBot
 - **Findings**: Look for sections titled "Key Findings", "Critical Issues", "Recommendations"
 - **Action Items**: Look for sections titled "Quick Wins", "Action Plan", "Recommendations"
 
