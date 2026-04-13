@@ -25,27 +25,55 @@ echo -e "${BLUE}  npm uninstall -g @google/gemini-cli${NC}"
 echo ""
 
 # --- Removal Logic ---
-# Assumes files were installed into a structure that might be under ~/.gemini/skills/geo or similar.
-# The exact path can vary, so we try common locations.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SOURCE_DIR="$SCRIPT_DIR"
 
-GEMINI_SKILL_PATH_1="~/.gemini/skills/geo"
-GEMINI_SKILL_PATH_2="${HOME}/.gemini/skills/geo" # Explicitly expand home directory
+GEMINI_SKILL_PATH="${HOME}/.gemini/skills/geo"
+GEMINI_AGENTS_DIR="${HOME}/.gemini/agents"
+GEMINI_SKILLS_DIR="${HOME}/.gemini/skills"
 
 echo -e "${YELLOW}→ Checking for installed GEO-SEO Gemini CLI skill files...${NC}"
 
 REMOVED_COUNT=0
 
-# Attempt to remove from common Gemini CLI skill paths
-if [ -d "$GEMINI_SKILL_PATH_1" ]; then
-    echo -e "${BLUE}  Found at ${GEMINI_SKILL_PATH_1}. Removing...${NC}"
-    rm -rf "$GEMINI_SKILL_PATH_1"
-    echo -e "${GREEN}✓ Removed: ${GEMINI_SKILL_PATH_1}${NC}"
+# Remove main skill
+if [ -d "$GEMINI_SKILL_PATH" ]; then
+    echo -e "${BLUE}  Found main skill at ${GEMINI_SKILL_PATH}. Removing...${NC}"
+    rm -rf "$GEMINI_SKILL_PATH"
+    echo -e "${GREEN}✓ Removed: ${GEMINI_SKILL_PATH}${NC}"
     REMOVED_COUNT=$((REMOVED_COUNT + 1))
-elif [ -d "$GEMINI_SKILL_PATH_2" ]; then
-    echo -e "${BLUE}  Found at ${GEMINI_SKILL_PATH_2}. Removing...${NC}"
-    rm -rf "$GEMINI_SKILL_PATH_2"
-    echo -e "${GREEN}✓ Removed: ${GEMINI_SKILL_PATH_2}${NC}"
-    REMOVED_COUNT=$((REMOVED_COUNT + 1))
+fi
+
+# Remove sub-skills
+echo -e "${YELLOW}→ Checking for installed sub-skills...${NC}"
+if [ -d "$SOURCE_DIR/skills" ]; then
+    for skill_dir in "$SOURCE_DIR/skills"/*/; do
+        if [ -d "$skill_dir" ]; then
+            skill_name=$(basename "$skill_dir")
+            target_dir="${GEMINI_SKILLS_DIR}/${skill_name}"
+            if [ -d "$target_dir" ]; then
+                rm -rf "$target_dir"
+                echo -e "${GREEN}✓ Removed: ${target_dir}${NC}"
+                REMOVED_COUNT=$((REMOVED_COUNT + 1))
+            fi
+        fi
+    done
+fi
+
+# Remove agents
+echo -e "${YELLOW}→ Checking for installed subagents...${NC}"
+if [ -d "$SOURCE_DIR/agents" ]; then
+    for agent_file in "$SOURCE_DIR/agents/"*.md; do
+        if [ -f "$agent_file" ]; then
+            agent_name=$(basename "$agent_file")
+            target_file="${GEMINI_AGENTS_DIR}/${agent_name}"
+            if [ -f "$target_file" ]; then
+                rm -f "$target_file"
+                echo -e "${GREEN}✓ Removed: ${target_file}${NC}"
+                REMOVED_COUNT=$((REMOVED_COUNT + 1))
+            fi
+        fi
+    done
 fi
 
 # Check for old Claude-specific directories and provide advice
@@ -58,7 +86,7 @@ if [ -d "$CLAUDE_DIR_REMNANT" ]; then
 fi
 
 if [ "$REMOVED_COUNT" -eq 0 ]; then
-    echo -e "${BLUE}→ No GEO-SEO Gemini CLI skill files found at common locations. No project files removed by this script.${NC}"
+    echo -e "${BLUE}→ No GEO-SEO Gemini CLI files found at common locations. No files removed by this script.${NC}"
 fi
 
 echo ""
